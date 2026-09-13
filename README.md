@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/icon@2x.png" width="128" alt="AudioMixer icon">
+  <img src="https://raw.githubusercontent.com/m1koz/audio-mixer/assets/icon@2x.png" width="128" alt="AudioMixer icon">
 </p>
 
 <h1 align="center">AudioMixer</h1>
@@ -10,14 +10,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/m1koz/AudioMixer/releases/latest"><img src="https://img.shields.io/github/v/release/m1koz/AudioMixer?display_name=tag&color=0A84FF&label=download" alt="Latest release"></a>
+  <a href="https://github.com/m1koz/audio-mixer/releases/latest"><img src="https://img.shields.io/github/v/release/m1koz/audio-mixer?display_name=tag&color=0A84FF&label=download" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/macOS-26%20Tahoe%2B-000000?logo=apple&logoColor=white" alt="macOS 26+">
   <img src="https://img.shields.io/badge/Apple%20silicon%20%26%20Intel-universal-34C759" alt="Universal binary">
   <img src="https://img.shields.io/badge/license-proprietary-8E8E93" alt="License">
 </p>
 
 <p align="center">
-  <img src="docs/mixer.png" width="860" alt="AudioMixer — Mixer">
+  <img src="https://raw.githubusercontent.com/m1koz/audio-mixer/assets/mixer.png" width="860" alt="AudioMixer — Mixer">
 </p>
 
 ## Why
@@ -36,14 +36,14 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 - **Native by design** — no kernel extensions, no virtual audio drivers, nothing to install besides the app. Built on Core Audio process taps, the same technology Apple introduced for system audio capture.
 
 <p align="center">
-  <img src="docs/equalizer.png" width="860" alt="AudioMixer — Equalizer">
+  <img src="https://raw.githubusercontent.com/m1koz/audio-mixer/assets/equalizer.png" width="860" alt="AudioMixer — Equalizer">
 </p>
 
 ## Download & install
 
 **Requirements:** macOS 26 Tahoe or later · Apple silicon or Intel.
 
-1. Download **`AudioMixer-1.0.dmg`** from the [latest release](https://github.com/m1koz/AudioMixer/releases/latest).
+1. Download **`AudioMixer-1.0.dmg`** from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
 2. Open the image and drag **AudioMixer** to **Applications**.
 3. Launch AudioMixer from Applications or Launchpad.
 4. On first launch macOS asks for **System Audio Recording Only** access — click **Allow**. This is the permission Core Audio requires to adjust other apps' sound; nothing is recorded or stored.
@@ -96,7 +96,7 @@ AudioMixer has no analytics, no crash reporting, no network features and no acco
 
 ## Feedback
 
-Found a bug or have an idea? Open an [issue](https://github.com/m1koz/AudioMixer/issues) — please include your macOS version and, for audio problems, the output device you were using.
+Found a bug or have an idea? Open an [issue](https://github.com/m1koz/audio-mixer/issues) — please include your macOS version and, for audio problems, the output device you were using.
 
 ## License
 

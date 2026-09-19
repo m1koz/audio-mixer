@@ -72,6 +72,19 @@ shasum -a 256 -c AudioMixer-1.0.dmg.sha256
 
 Settings are applied instantly and remembered per app across launches. Quit AudioMixer and every app goes back to the regular system audio path.
 
+### Tips & shortcuts
+
+| Shortcut | Action |
+|---|---|
+| ⌘1 / ⌘2 / ⌘3 / ⌘4 | Mixer · Equalizer · Appearance · General |
+| ⌘, | Open Settings |
+| Right-click a row | Pin, mute, open its equalizer, reset, reveal in Finder |
+| Drag the volume capsule | Works anywhere along the bar — no need to grab a knob |
+
+- Pin the apps you adjust most often: they stay at the top of both the window and the menu bar panel.
+- Save an equalizer curve with **Save Preset…** — it is stored for that app only, so a browser and a music player can keep different presets.
+- If an app uses helper processes (browsers, Electron apps), they are grouped under the app automatically.
+
 ## How it works
 
 AudioMixer uses **Core Audio process taps** (macOS 14.2+). For each app that plays sound it creates a tap that mutes the app's direct output and feeds the audio through a small real-time pipeline — app equalizer → master equalizer → volume → soft limiter — into a private aggregate device on the output you chose. Everything happens in memory, in real time, with one buffer of added latency (≈10 ms). No audio is written to disk, and no data ever leaves your Mac.

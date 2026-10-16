@@ -43,7 +43,7 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 
 **Requirements:** macOS 26 Tahoe or later · Apple silicon or Intel.
 
-1. Download **`AudioMixer-1.0.dmg`** from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
+1. Download **`AudioMixer-1.0.1.dmg`** from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
 2. Open the image and drag **AudioMixer** to **Applications**.
 3. Launch AudioMixer from Applications or Launchpad.
 4. On first launch macOS asks for **System Audio Recording Only** access — click **Allow**. This is the permission Core Audio requires to adjust other apps' sound; nothing is recorded or stored.
@@ -56,7 +56,7 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 To verify the download:
 
 ```bash
-shasum -a 256 -c AudioMixer-1.0.dmg.sha256
+shasum -a 256 -c AudioMixer-1.0.1.dmg.sha256
 ```
 
 ## Using AudioMixer

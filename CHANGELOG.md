@@ -2,6 +2,12 @@
 
 All notable changes to AudioMixer are documented here.
 
+## [1.0.1] — 2026-10-16
+
+### Fixed
+- Fixed the menu bar app list collapsing and clipping application rows (#1).
+- Size the list to its content and scroll longer lists within the available screen height.
+
 ## [1.0] — 2026-09-14
 
 Initial release.

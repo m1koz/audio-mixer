@@ -10,21 +10,43 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/m1koz/audio-mixer/releases/latest"><img src="https://img.shields.io/github/v/release/m1koz/audio-mixer?display_name=tag&color=0A84FF&label=download" alt="Latest release"></a>
-  <img src="https://img.shields.io/badge/macOS-26%20Tahoe%2B-000000?logo=apple&logoColor=white" alt="macOS 26+">
-  <img src="https://img.shields.io/badge/Apple%20silicon%20%26%20Intel-universal-34C759" alt="Universal binary">
-  <img src="https://img.shields.io/badge/license-proprietary-8E8E93" alt="License">
+  <a href="https://github.com/m1koz/audio-mixer/releases/latest"><img src="https://img.shields.io/github/v/release/m1koz/audio-mixer?style=flat-square&display_name=tag&color=0A84FF&label=download" alt="Latest release"></a>
+  <img src="https://img.shields.io/badge/macOS-26%20Tahoe%2B-000000?style=flat-square&logo=apple&logoColor=white" alt="macOS 26+">
+  <img src="https://img.shields.io/badge/Apple%20silicon%20%26%20Intel-universal-34C759?style=flat-square" alt="Universal binary">
+  <img src="https://img.shields.io/badge/license-proprietary-8E8E93?style=flat-square" alt="License">
+  <a href="https://github.com/m1koz/audio-mixer/stargazers"><img src="https://img.shields.io/github/stars/m1koz/audio-mixer?style=flat-square&color=0A84FF&label=stars" alt="GitHub stars"></a>
+  <a href="https://github.com/m1koz/audio-mixer/releases"><img src="https://img.shields.io/github/downloads/m1koz/audio-mixer/total?style=flat-square&color=0A84FF&label=downloads" alt="Release asset downloads"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/m1koz/audio-mixer/releases/latest"><b>↓ Download for macOS</b></a>
+  &nbsp; · &nbsp; <a href="#features">Features</a>
+  &nbsp; · &nbsp; <a href="#installation">Installation</a>
+  &nbsp; · &nbsp; <a href="#guide">Guide</a>
+  &nbsp; · &nbsp; <a href="#faq">FAQ</a>
+  &nbsp; · &nbsp; <a href="https://github.com/m1koz/audio-mixer/issues">Feedback</a>
 </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/m1koz/audio-mixer/assets/mixer.png" width="860" alt="AudioMixer — Mixer">
 </p>
 
-## Why
+## 🎛️ Your apps. Your sound.
 
 macOS gives you one volume slider for everything. AudioMixer adds the controls the system never had: turn down a noisy browser, give a voice chat its own equalizer, send music to the speakers while calls stay in your headphones — all from the menu bar, with Liquid Glass and the look of a native macOS 26 app.
 
-## Features
+<a id="features"></a>
+
+## ✨ Features
+
+| Mix | Shape | Route |
+|---|---|---|
+| Volume and mute for each app | 10-band EQ and a master curve | Different outputs for different apps |
+| Pinned apps and live meters | Built-in and per-app presets | Device priorities and Bluetooth controls |
+| A quick mixer in your menu bar | Liquid Glass and appearance settings | Native Core Audio, no extra drivers |
+
+<details>
+<summary><b>See all features</b></summary>
 
 - **Per-app volume** — every app that plays sound gets its own slider and mute, with live level meters while processing is active. Neutral apps use the native macOS audio path.
 - **10-band equalizer** — ±12 dB per band, preamp, response curve, 22 built-in presets (Acoustic, Bass Booster, Rock, Vocal Booster …) plus your own presets saved per app. A master equalizer applies on top of everything.
@@ -37,11 +59,15 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 - **16 languages** — follows your system language automatically; can be overridden in Settings.
 - **Native by design** — no kernel extensions, no virtual audio drivers, nothing to install besides the app. Built on Core Audio process taps, the same technology Apple introduced for system audio capture.
 
+</details>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/m1koz/audio-mixer/assets/equalizer.png" width="860" alt="AudioMixer — Equalizer">
 </p>
 
-## Download & install
+<a id="installation"></a>
+
+## 📥 Download & install
 
 **Requirements:** macOS 26 Tahoe or later · Apple silicon or Intel.
 
@@ -61,7 +87,9 @@ To verify the download:
 shasum -a 256 -c AudioMixer-1.1.dmg.sha256
 ```
 
-## Using AudioMixer
+<a id="guide"></a>
+
+## 🧭 Using AudioMixer
 
 | | |
 |---|---|
@@ -90,13 +118,20 @@ Settings are applied instantly and remembered per app across launches. Quit Audi
 - Save an equalizer curve with **Save Preset…** — it is stored for that app only, so a browser and a music player can keep different presets.
 - If an app uses helper processes (browsers, Electron apps), they are grouped under the app automatically.
 
+<details>
+<summary><b>Under the hood — audio processing and the native audio path</b></summary>
+
 ## How it works
 
 AudioMixer uses **Core Audio process taps** for apps that need volume, equalizer or routing changes. Their audio passes through a real-time pipeline — app equalizer → master equalizer → volume → soft limiter — into a private aggregate device on the selected output. Each app has independent filter history.
 
 Apps at neutral settings bypass processing when neither equalizer changes their sound. Their sound stays on the native macOS path, and a playback indicator replaces the captured level meter. Pinning an app alone does not enable processing. Audio is processed in memory and is never written to disk or uploaded.
 
-## FAQ
+</details>
+
+<a id="faq"></a>
+
+## 💬 FAQ
 
 **Does it record my audio?**
 No. The "System Audio Recording Only" permission is what macOS calls the ability to receive other apps' audio. AudioMixer only processes it live; there is no recording, no file, no network access.
@@ -110,15 +145,17 @@ That's macOS switching the headset to the low-bandwidth hands-free profile whene
 **Where are my settings stored?**
 In the app's preferences (`~/Library/Preferences/com.mk.AudioMixer.plist`). *General → Reset All…* clears everything.
 
-## Privacy
+## 🔒 Privacy
 
 AudioMixer has no analytics, crash reporting or accounts, and it does not upload audio or usage data. Bluetooth access is used to list and connect paired audio devices when you open those controls. Device priorities and audio preferences are stored locally.
 
-## Feedback
+## ⭐ Feedback & support
 
 Found a bug or have an idea? Open an [issue](https://github.com/m1koz/audio-mixer/issues) — please include your macOS version and, for audio problems, the output device you were using.
 
-## License
+If AudioMixer makes your Mac more useful, a star helps others discover it. You can also share the [latest release](https://github.com/m1koz/audio-mixer/releases/latest) with a friend.
+
+## ⚖️ License
 
 AudioMixer is free to download and use. It is proprietary software — the source code is not published, and redistribution or modification of the app is not permitted. See [LICENSE](LICENSE) for the full terms.
 

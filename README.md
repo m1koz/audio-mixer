@@ -142,6 +142,9 @@ Apps appear when they actually output sound. Helper processes (Chrome / Brave / 
 **Bluetooth headphones sound worse during calls.**
 That's macOS switching the headset to the low-bandwidth hands-free profile whenever its microphone is in use — AudioMixer follows the device's sample rate but can't change the profile.
 
+**Why does GitHub offer “Source code” downloads?**
+Those ZIP/TAR archives contain this public repository’s documentation and distribution materials, not the AudioMixer application source. To install the app, choose the `.dmg` asset from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
+
 **Where are my settings stored?**
 In the app's preferences (`~/Library/Preferences/com.mk.AudioMixer.plist`). *General → Reset All…* clears everything.
 

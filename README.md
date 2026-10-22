@@ -71,6 +71,8 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 
 **Requirements:** macOS 26 Tahoe or later · Apple silicon or Intel.
 
+**Latest download: 1.1.1, build 6.** If you installed an earlier 1.1.1 build, download the DMG again and replace the app to get the additional routing fixes.
+
 1. Download **`AudioMixer-1.1.1.dmg`** from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
 2. Open the image and drag **AudioMixer** to **Applications**.
 3. Launch AudioMixer from Applications or Launchpad.

@@ -4,10 +4,15 @@ All notable changes to AudioMixer are documented here.
 
 ## [1.1.1] — 2026-10-23
 
+Refreshed download: **build 6**. If you installed the earlier 1.1.1 build, download the DMG again and replace the app.
+
 ### Fixed
-- Fixed Bluetooth output readiness tracking: AirPods and other devices are now observed even before their output streams become available (#3).
-- Refresh output routes when a device becomes ready, and periodically recover from missed device/default-output notifications.
-- Preserve the last valid device snapshot during transient Core Audio read errors.
+- Bluetooth output readiness tracking: AirPods and other devices are observed even before their output streams become available (#3).
+- Recover from missed device/default-output notifications and preserve the last valid device snapshot during transient Core Audio read errors.
+- Retry failed automatic output selections with bounded backoff; unrelated device metadata changes no longer cause immediate repeated attempts.
+- A failed old output or process no longer delays starting audio processing on a new device, Bluetooth format or process identity.
+- Avoid false Bluetooth connection errors when enumeration lags a successful request; clear a device's stale error if it connects through macOS Settings.
+- Preserve existing app processing during transient Core Audio process-list read errors; valid app exits still release processing.
 - Keep existing per-app routes and audio settings; automatic output priorities remain opt-in.
 
 ## [1.1] — 2026-10-16

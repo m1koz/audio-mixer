@@ -2,6 +2,14 @@
 
 All notable changes to AudioMixer are documented here.
 
+## [1.1.1] — 2026-10-23
+
+### Fixed
+- Fixed Bluetooth output readiness tracking: AirPods and other devices are now observed even before their output streams become available (#3).
+- Refresh output routes when a device becomes ready, and periodically recover from missed device/default-output notifications.
+- Preserve the last valid device snapshot during transient Core Audio read errors.
+- Keep existing per-app routes and audio settings; automatic output priorities remain opt-in.
+
 ## [1.1] — 2026-10-16
 
 ### New

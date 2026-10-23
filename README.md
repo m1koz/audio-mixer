@@ -52,6 +52,7 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 - **10-band equalizer** — ±12 dB per band, preamp, response curve, 22 built-in presets (Acoustic, Bass Booster, Rock, Vocal Booster …) plus your own presets saved per app. A master equalizer applies on top of everything.
 - **Per-app audio routing** — play each app on a different output device: built-in speakers, AirPods, USB interface, HDMI, AirPlay.
 - **Output priorities** — keep a preferred order of devices and optionally switch to the first available output. Manual selection disables automation; individual app routes stay independent.
+- **Automatic headphone switching** — optionally select headphones when macOS connects them and their output is ready. Manual choices and per-app output assignments are respected.
 - **Bluetooth audio** — connect already paired headphones and speakers from the output card, then choose them as your output.
 - **Pinned apps** — keep your favorite apps at the top, even when they're not playing.
 - **Menu bar panel** — a Control Center–style popover with the system output, system volume and every playing app.
@@ -71,9 +72,9 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 
 **Requirements:** macOS 26 Tahoe or later · Apple silicon or Intel.
 
-**Latest download: 1.1.1, build 6.** If you installed an earlier 1.1.1 build, download the DMG again and replace the app to get the additional routing fixes.
+**Latest download: 1.1.2.** Quit AudioMixer before replacing the app in Applications. Your settings and EQ presets are retained.
 
-1. Download **`AudioMixer-1.1.1.dmg`** from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
+1. Download **`AudioMixer-1.1.2.dmg`** from the [latest release](https://github.com/m1koz/audio-mixer/releases/latest).
 2. Open the image and drag **AudioMixer** to **Applications**.
 3. Launch AudioMixer from Applications or Launchpad.
 4. On first launch macOS asks for **System Audio Recording Only** access — click **Allow**. This is the permission Core Audio requires to adjust other apps' sound; nothing is recorded or stored.
@@ -86,7 +87,7 @@ macOS gives you one volume slider for everything. AudioMixer adds the controls t
 To verify the download:
 
 ```bash
-shasum -a 256 -c AudioMixer-1.1.1.dmg.sha256
+shasum -a 256 -c AudioMixer-1.1.2.dmg.sha256
 ```
 
 <a id="guide"></a>
@@ -100,7 +101,7 @@ shasum -a 256 -c AudioMixer-1.1.1.dmg.sha256
 | **Equalizer** | ⌘2. Pick *All Apps* for the master curve or a single app. Drag the bands, choose a preset or press **Save Preset…** to keep your own — presets belong to the app you saved them for. |
 | **Routing** | The speaker icon on each row chooses that app's output device. *System Default* follows whatever you pick in Control Center. |
 | **Appearance** | ⌘3. Liquid Glass style and tint, theme, accent, window backdrop, slider style, level meters, menu bar icon. |
-| **General** | ⌘4. Output-device priorities, launch at login, Dock icon behavior, language, background processes, permission status. |
+| **General** | ⌘4. Automatic headphone switching, output-device priorities, launch at login, Dock icon behavior, language, background processes, permission status. |
 | **Bluetooth** | Open the Bluetooth controls beside the output selector, connect a paired audio device, then select it from the output menu. |
 
 Settings are applied instantly and remembered per app across launches. Quit AudioMixer and every app goes back to the regular system audio path.
@@ -125,7 +126,7 @@ Settings are applied instantly and remembered per app across launches. Quit Audi
 
 ## How it works
 
-AudioMixer uses **Core Audio process taps** for apps that need volume, equalizer or routing changes. Their audio passes through a real-time pipeline — app equalizer → master equalizer → volume → soft limiter — into a private aggregate device on the selected output. Each app has independent filter history.
+AudioMixer uses **Core Audio process taps** for apps that need volume, equalizer or routing changes. Capture runs in a separate bundled helper. Audio passes through a real-time pipeline — app equalizer → master equalizer → volume → soft limiter — and plays through the native macOS audio engine. System Default follows the system output, while explicit per-app routes use the selected device. Each app has independent filter history; paused apps release their playback engine.
 
 Apps at neutral settings bypass processing when neither equalizer changes their sound. Their sound stays on the native macOS path, and a playback indicator replaces the captured level meter. Pinning an app alone does not enable processing. Audio is processed in memory and is never written to disk or uploaded.
 
@@ -140,6 +141,9 @@ No. The "System Audio Recording Only" permission is what macOS calls the ability
 
 **An app doesn't show up.**
 Apps appear when they actually output sound. Helper processes (Chrome / Brave / Electron helpers, WebKit) are grouped under their parent app automatically. Enable *Show background and system processes* in General to see everything Core Audio knows about.
+
+**Can AudioMixer automatically use my headphones?**
+Enable **General → Output Priority → Automatically switch to headphones**. Once macOS connects a headphone output and it is ready, AudioMixer selects it. A manual output choice is respected until the next connection. This mode and the separate device-priority mode are alternatives; enabling one turns off the other. Per-app output overrides stay unchanged.
 
 **Bluetooth headphones sound worse during calls.**
 That's macOS switching the headset to the low-bandwidth hands-free profile whenever its microphone is in use — AudioMixer follows the device's sample rate but can't change the profile.

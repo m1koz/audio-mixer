@@ -2,6 +2,21 @@
 
 All notable changes to AudioMixer are documented here.
 
+## [1.1.2] — 2026-10-23
+
+### New
+- Optional **Automatically switch to headphones** setting in General → Output Priority, translated into all 16 supported languages.
+- Select ready headphone outputs on connection while respecting manual choices and preserving per-app routes. Existing installations keep the new mode off until enabled.
+
+### Audio improvements
+- Isolate Core Audio capture in a bundled helper and render processed audio through the native macOS audio engine. System-following routes no longer pin playback to a device.
+- Release playback and routing sessions while apps are paused.
+- Bound routing waits and capture-helper cleanup, handle silent callbacks without false stall detection, and hide internal playback devices from output menus.
+
+### Validation
+- 72 regression check groups passed, including 16 locales and both slider styles.
+- Live checks with Redmi Buds 4 Pro covered low-volume playback, headphone output selection and manual overrides. The reporter's AirPods after a long idle period still require confirmation; issue #3 remains open.
+
 ## [1.1.1] — 2026-10-23
 
 Refreshed download: **build 6**. If you installed the earlier 1.1.1 build, download the DMG again and replace the app.

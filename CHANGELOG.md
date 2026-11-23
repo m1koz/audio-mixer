@@ -2,6 +2,11 @@
 
 All notable changes to AudioMixer are documented here.
 
+## [1.1.3] — 2026-11-23
+
+- Detect when app audio output stops even though capture continues. Attempt to restart playback, then release audio to macOS if playback still fails.
+- Verified recovery and fallback for System Default and per-app outputs in silent tests. Hardware confirmation on the WONDERBOOM 4 is tracked in [issue #4](https://github.com/m1koz/audio-mixer/issues/4).
+
 ## [1.1.2] — 2026-10-23
 
 ### New
